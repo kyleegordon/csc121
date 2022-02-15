@@ -16,7 +16,3 @@ for i in reversed(range(1, 11)):
     for j in range(0, i):
         print('+', end='')
     print('')
-
-
-
-
