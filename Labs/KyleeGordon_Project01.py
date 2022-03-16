@@ -1,6 +1,6 @@
 # Kylee Gordon Project 01 02/18/2022
 
-# This program handles a tea shop's orders. It inputs from the customer the variety of tea,
+# This program processes a tea shop's orders. It inputs from the customer the variety of tea,
 # the size they would like, and their name. Then it outputs their order information
 # including their name, price of the tea, sales tax, and the total amount owed
 
