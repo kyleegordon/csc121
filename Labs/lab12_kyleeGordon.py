@@ -33,14 +33,14 @@ def main():
 def num_rooms():
     total_rooms = 0
     while total_rooms < 1:
-        total_rooms = int(input("How many rooms do you need to paint?"))
+        total_rooms = int(input("How many rooms do you need to paint? (Minimum 1): "))
 
     sum_sqft = 0
     for x in range(1, total_rooms + 1):
         sqft = 0
 
         while sqft < 1:
-            sqft = int(input("How many square feet are in room " + str(x) + "?"))
+            sqft = int(input("How many square feet are in room " + str(x) + "? (Minimum 1): "))
 
         sum_sqft += sqft
 
@@ -49,7 +49,7 @@ def num_rooms():
 
 # This function collects user input to determine the cost per gallon of paint
 def paint_price():
-    price_per_gallon = float(input("What is the price of each gallon of paint? (Minimum $10) : $"))
+    price_per_gallon = float(input("What is the price of each gallon of paint? (Minimum $10): $"))
     if price_per_gallon >= 10:
         return price_per_gallon
     else:
