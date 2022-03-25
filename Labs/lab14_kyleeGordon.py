@@ -14,7 +14,6 @@ def main():
     drawBase(0, -200, 100)
     drawMidSection(0, 0, 75)
     drawHead(0, 150, 50)
-    drawScarf()
 
 
 def drawBase(x, y, radius):
@@ -72,19 +71,8 @@ def drawHead(x, y, radius):
     turtle.circle(radius)
 
     # Eyes
-    turtle.penup()
-    turtle.goto((x - (radius / 3)), (y + radius))
-    turtle.pendown()
-    turtle.fillcolor('blue')
-    turtle.begin_fill()
-    turtle.circle(5)
-    turtle.end_fill()
-    turtle.penup()
-    turtle.goto((x + (radius / 3)), (y + radius))
-    turtle.pendown()
-    turtle.begin_fill()
-    turtle.circle(5)
-    turtle.end_fill()
+    drawFilledCircle((x - (radius / 3)), (y + radius), (radius / 10), 'blue')
+    drawFilledCircle((x + (radius / 3)), (y + radius), (radius / 10), 'blue')
 
     # Mouth
     turtle.penup()
@@ -94,64 +82,74 @@ def drawHead(x, y, radius):
 
     drawHat(x, y, radius)
 
+    drawScarf(x, y, radius)
+
 
 def drawHat(head_x, head_y, head_radius):
-    # drawHead(0, 150, 50)
     # Hat Brim
     turtle.penup()
     turtle.goto((head_x - (1.5 * head_radius)), (head_y + (1.5 * head_radius)))
     turtle.pendown()
-    turtle.fillcolor('black')
-    turtle.begin_fill()
-    turtle.goto((head_x + (1.5 * head_radius)), (head_y + (1.5 * head_radius)))
-    turtle.goto((head_x + (1.5 * head_radius)), (head_y + (2 * head_radius)))
-    turtle.goto((head_x - (1.5 * head_radius)), (head_y + (2 * head_radius)))
-    turtle.goto((head_x - (1.5 * head_radius)), (head_y + (1.5 * head_radius)))
-    turtle.end_fill()
+    drawFilledRectangle(head_radius * 3, head_radius / 2, 'black')
 
     # Hat Top
     turtle.penup()
     turtle.goto((head_x + (0.75 * head_radius)), (head_y + (2 * head_radius)))
     turtle.pendown()
+    turtle.setheading(0)
     turtle.left(90)
-    turtle.begin_fill()
-    for i in range(4):
-        turtle.forward(head_radius * 1.5)
-        turtle.left(90)
-    turtle.end_fill()
+    drawFilledRectangle((head_radius * 1.5), (head_radius * 1.5), 'black')
 
 
-def drawScarf():
-    pass
+def drawScarf(head_x, head_y, head_radius):
+    # drawHead(0, 150, 50)
+    turtle.penup()
+    turtle.goto(head_x - head_radius, (head_y - (head_radius / 5)))
+    turtle.pendown()
+    turtle.pencolor('red')
+    turtle.setheading(0)
+
+    drawFilledRectangle((head_radius * 2), (head_radius / 3), 'red')
+    turtle.right(45)
+    drawFilledRectangle(head_radius, (head_radius / 3), 'red')
+    turtle.left(135)
+    drawFilledRectangle(head_radius, (head_radius / 3), 'red')
+
+    turtle.pencolor('black')
 
 
 def drawButtons(mid_x, mid_y, mid_radius):
-    # drawMidSection(0, 0, 75)
     # Top Button
-    turtle.penup()
-    turtle.goto(mid_x, (mid_y + (mid_radius * 1.5)))
-    turtle.pendown()
-    turtle.fillcolor('purple')
-    turtle.begin_fill()
-    turtle.circle((mid_radius/15))
-    turtle.end_fill()
+    drawFilledCircle(mid_x, (mid_y + (mid_radius * 1.5)), (mid_radius / 15), 'purple')
 
     # Middle Button
-    turtle.penup()
-    turtle.goto(mid_x, (mid_y + mid_radius))
-    turtle.pendown()
-    turtle.fillcolor('purple')
-    turtle.begin_fill()
-    turtle.circle((mid_radius / 15))
-    turtle.end_fill()
+    drawFilledCircle(mid_x, (mid_y + mid_radius), (mid_radius / 15), 'purple')
 
     # Bottom Button
+    drawFilledCircle(mid_x, (mid_y + (mid_radius * 0.5)), (mid_radius / 15), 'purple')
+
+
+def drawFilledCircle(x, y, radius, color):
     turtle.penup()
-    turtle.goto(mid_x, (mid_y + (mid_radius * 0.5)))
+    turtle.goto(x, y)
     turtle.pendown()
-    turtle.fillcolor('purple')
+    turtle.fillcolor(color)
     turtle.begin_fill()
-    turtle.circle((mid_radius / 15))
+    turtle.circle(radius)
+    turtle.end_fill()
+
+
+def drawFilledRectangle(length, width, color):
+    turtle.pendown()
+    turtle.fillcolor(color)
+    turtle.begin_fill()
+    turtle.forward(length)
+    turtle.left(90)
+    turtle.forward(width)
+    turtle.left(90)
+    turtle.forward(length)
+    turtle.left(90)
+    turtle.forward(width)
     turtle.end_fill()
 
 
