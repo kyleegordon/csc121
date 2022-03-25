@@ -2,9 +2,8 @@
 
 # This program uses Turtle Graphics to draw a snowman
 
-# set up turtle
+# Set up turtle
 import turtle
-
 turtle.hideturtle()
 turtle.width(1)
 turtle.speed(0)
@@ -102,7 +101,6 @@ def drawHat(head_x, head_y, head_radius):
 
 
 def drawScarf(head_x, head_y, head_radius):
-    # drawHead(0, 150, 50)
     turtle.penup()
     turtle.goto(head_x - head_radius, (head_y - (head_radius / 5)))
     turtle.pendown()
