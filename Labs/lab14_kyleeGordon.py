@@ -16,6 +16,7 @@ def main():
 
 
 def drawBase(x, y, radius):
+    # Draw base circle for snowman
     turtle.penup()
     turtle.goto(x, y)
     turtle.pendown()
@@ -23,13 +24,16 @@ def drawBase(x, y, radius):
 
 
 def drawMidSection(x, y, radius):
+    # Draw middle circle for snowman
     turtle.penup()
     turtle.goto(x, y)
     turtle.pendown()
     turtle.circle(radius)
 
+    # Add arms
     drawArms(x, y, radius)
 
+    # Add buttons
     drawButtons(x, y, radius)
 
 
@@ -62,25 +66,27 @@ def drawArms(mid_x, mid_y, mid_radius):
 
 
 def drawHead(x, y, radius):
-    # Head
+    # Draw head circle
     turtle.penup()
     turtle.goto(x, y)
     turtle.pendown()
     turtle.setheading(0)
     turtle.circle(radius)
 
-    # Eyes
+    # Add Eyes
     drawFilledCircle((x - (radius / 3)), (y + radius), (radius / 10), 'blue')
     drawFilledCircle((x + (radius / 3)), (y + radius), (radius / 10), 'blue')
 
-    # Mouth
+    # Add Mouth
     turtle.penup()
     turtle.goto((x - (radius / 2)), 180)
     turtle.pendown()
     turtle.forward(radius)
 
+    # Add Hat
     drawHat(x, y, radius)
 
+    # Add Scarf
     drawScarf(x, y, radius)
 
 
@@ -101,12 +107,14 @@ def drawHat(head_x, head_y, head_radius):
 
 
 def drawScarf(head_x, head_y, head_radius):
+    # Position turtle
     turtle.penup()
     turtle.goto(head_x - head_radius, (head_y - (head_radius / 5)))
     turtle.pendown()
     turtle.pencolor('red')
     turtle.setheading(0)
 
+    # Draw Scarf
     drawFilledRectangle((head_radius * 2), (head_radius / 3), 'red')
     turtle.right(45)
     drawFilledRectangle(head_radius, (head_radius / 3), 'red')
@@ -128,9 +136,12 @@ def drawButtons(mid_x, mid_y, mid_radius):
 
 
 def drawFilledCircle(x, y, radius, color):
+    # Position turtle
     turtle.penup()
     turtle.goto(x, y)
     turtle.pendown()
+
+    # Draw circle
     turtle.fillcolor(color)
     turtle.begin_fill()
     turtle.circle(radius)
@@ -138,6 +149,7 @@ def drawFilledCircle(x, y, radius, color):
 
 
 def drawFilledRectangle(length, width, color):
+    # Draw Rectangle
     turtle.pendown()
     turtle.fillcolor(color)
     turtle.begin_fill()
