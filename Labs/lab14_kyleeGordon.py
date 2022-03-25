@@ -4,6 +4,7 @@
 
 # set up turtle
 import turtle
+
 turtle.hideturtle()
 turtle.width(1)
 turtle.speed(0)
@@ -13,8 +14,6 @@ def main():
     drawBase(0, -200, 100)
     drawMidSection(0, 0, 75)
     drawHead(0, 150, 50)
-    drawArms()
-    drawButtons()
     drawScarf()
 
 
@@ -31,14 +30,37 @@ def drawMidSection(x, y, radius):
     turtle.pendown()
     turtle.circle(radius)
 
+    drawArms(x, y, radius)
 
-def drawArms():
+    drawButtons(x, y, radius)
+
+
+def drawArms(mid_x, mid_y, mid_radius):
     # Left Arm
     turtle.penup()
-    turtle.goto(-75, 75)
+    turtle.goto((mid_x - mid_radius), (mid_y + mid_radius))
     turtle.pendown()
-    turtle.left(45)
-    turtle.forward(50)
+    turtle.setheading(150)
+    turtle.forward(mid_radius * 0.67)
+    turtle.right(45)
+    turtle.forward(mid_radius * 0.67)
+    turtle.right(45)
+    turtle.forward(mid_radius / 5)
+    turtle.back(mid_radius / 5)
+    turtle.left(90)
+    turtle.forward(mid_radius / 5)
+
+    # Right Arm
+    turtle.penup()
+    turtle.goto((mid_x + mid_radius), (mid_y + mid_radius))
+    turtle.pendown()
+    turtle.setheading(45)
+    turtle.forward(mid_radius)
+    turtle.right(45)
+    turtle.forward(mid_radius / 5)
+    turtle.back(mid_radius / 5)
+    turtle.left(90)
+    turtle.forward(mid_radius / 5)
 
 
 def drawHead(x, y, radius):
@@ -46,6 +68,7 @@ def drawHead(x, y, radius):
     turtle.penup()
     turtle.goto(x, y)
     turtle.pendown()
+    turtle.setheading(0)
     turtle.circle(radius)
 
     # Eyes
@@ -69,9 +92,7 @@ def drawHead(x, y, radius):
     turtle.pendown()
     turtle.forward(radius)
 
-    # Hat
     drawHat(x, y, radius)
-
 
 
 def drawHat(head_x, head_y, head_radius):
@@ -104,8 +125,34 @@ def drawScarf():
     pass
 
 
-def drawButtons():
-    pass
+def drawButtons(mid_x, mid_y, mid_radius):
+    # drawMidSection(0, 0, 75)
+    # Top Button
+    turtle.penup()
+    turtle.goto(mid_x, (mid_y + (mid_radius * 1.5)))
+    turtle.pendown()
+    turtle.fillcolor('purple')
+    turtle.begin_fill()
+    turtle.circle((mid_radius/15))
+    turtle.end_fill()
+
+    # Middle Button
+    turtle.penup()
+    turtle.goto(mid_x, (mid_y + mid_radius))
+    turtle.pendown()
+    turtle.fillcolor('purple')
+    turtle.begin_fill()
+    turtle.circle((mid_radius / 15))
+    turtle.end_fill()
+
+    # Bottom Button
+    turtle.penup()
+    turtle.goto(mid_x, (mid_y + (mid_radius * 0.5)))
+    turtle.pendown()
+    turtle.fillcolor('purple')
+    turtle.begin_fill()
+    turtle.circle((mid_radius / 15))
+    turtle.end_fill()
 
 
 main()
