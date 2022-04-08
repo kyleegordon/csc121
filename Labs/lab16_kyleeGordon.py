@@ -1,4 +1,4 @@
-# Kylee Gordon Lab-17 04/08/2022
+# Kylee Gordon Lab-16 04/08/2022
 
 # This program gets user input and uses it to generate a html file containing the code required to
 # create a simple website containing the user's input
@@ -11,9 +11,9 @@ def main():
     # Processing
     create_file()
     html = generate_html(name, description)
-    write_file(html)
 
     # Output
+    write_file(html)
     print("You webpage has been created, the HTML can be viewed in the file: webpage.html")
 
 
