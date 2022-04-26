@@ -6,20 +6,39 @@
 
 def main():
     # Setup
-    girl_names= read_file("GirlNames.txt")
+    girl_names = read_file("GirlNames.txt")
     boy_names = read_file("BoyNames.txt")
     girl_total = 0
     boy_total = 0
-    continue_program = True
+    total_names_checked = 0
+    continue_program = 'y'
 
-    while continue_program:
+    while continue_program != 'x':
         # Input
-        current_name = input("Please enter a name: ")
+        current_name = get_name()
 
         # Processing
+        if current_name == '':
+            continue
+        total_names_checked += 1
 
-        # Output
+        if check_list(current_name, girl_names):
+            girl_total += 1
+            print("\n" + current_name.capitalize() + " was on the list of popular girls names")
+        else:
+            print("\n" + current_name.capitalize() + " was not on the list of popular girls names")
 
+        if check_list(current_name, boy_names):
+            boy_total += 1
+            print("\n" + current_name.capitalize() + " was on the list of popular boys names")
+        else:
+            print("\n" + current_name.capitalize() + " was not on the list of popular boys names")
+
+        continue_program = input("\nEnter x to quit program, or any other key to continue: ")
+        print("\n_______________________________________________________________")
+
+    # Output
+    output(total_names_checked, girl_total, boy_total)
 
 
 def read_file(file_name):
@@ -27,6 +46,7 @@ def read_file(file_name):
     try:
         file = open(file_name, "r")
         for x in file:
+            x = x.lower().strip()
             file_content.append(x)
         file.close()
     except IOError:
@@ -34,9 +54,24 @@ def read_file(file_name):
     return file_content
 
 
+def get_name():
+    name = input("\nPlease enter a name: ")
+    return name.lower()
 
-def output(numbers_average):
-    print("\nThe average of the numbers in this file is:  " + format(numbers_average, '.2f'))
+
+def check_list(name, name_list):
+    for x in name_list:
+        if name == x:
+            return True
+    return False
+
+
+def output(total_names_checked, girl_total, boy_total):
+    print("\nA total of " + str(total_names_checked) + " names were checked")
+    print("\n" + str(girl_total) + " of those names were on the list of popular girls names")
+    print("\n" + str(boy_total) + " of those names were on the list of popular boys names")
+    print("\nGoodbye")
+    print("\n_______________________________________________________________")
 
 
 main()
