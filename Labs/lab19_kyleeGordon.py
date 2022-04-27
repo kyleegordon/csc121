@@ -2,6 +2,8 @@
 
 # This program reads a list of popular boy names and a list of girl names from separate files.
 # The user can enter a name and the program will output whether the name was on one of the lists
+# It keeps a tally of the total number of names checked and the number of checked names that
+# were present on each list. The totals are displayed when the program is ended.
 
 
 def main():
@@ -41,6 +43,7 @@ def main():
     output(total_names_checked, girl_total, boy_total)
 
 
+# Reads items from a file and adds them to a list
 def read_file(file_name):
     file_content = []
     try:
@@ -54,11 +57,13 @@ def read_file(file_name):
     return file_content
 
 
+# Gets name from user
 def get_name():
     name = input("\nPlease enter a name: ")
     return name.lower()
 
 
+# Checks if name is in list
 def check_list(name, name_list):
     for x in name_list:
         if name == x:
@@ -66,6 +71,7 @@ def check_list(name, name_list):
     return False
 
 
+# Prints final tallies
 def output(total_names_checked, girl_total, boy_total):
     print("\nA total of " + str(total_names_checked) + " names were checked")
     print("\n" + str(girl_total) + " of those names were on the list of popular girls names")

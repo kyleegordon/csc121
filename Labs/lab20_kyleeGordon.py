@@ -41,7 +41,7 @@ def get_number():
     return number
 
 
-# creates list starting at 2 and ending with highest_number
+# Creates list starting at 2 and ending with highest_number
 def create_list(highest_number):
     numbers_list = []
     for x in range(2, highest_number + 1):
