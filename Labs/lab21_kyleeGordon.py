@@ -6,32 +6,31 @@ import csv
 
 
 def main():
-    # csv file name
+    # Setup
     filename = "lab21_excel.csv"
-
-    # initializing the titles and rows list
-    fields = []
+    headers = []
     rows = []
 
-    # reading csv file
+    # Input
     with open(filename, 'r') as csvfile:
-        # creating a csv reader object
         csvreader = csv.reader(csvfile)
 
-        # extracting field names through first row
-        fields = next(csvreader)
+        headers = next(csvreader)
 
-        # extracting each data row one by one
         for row in csvreader:
             rows.append(row)
 
-    # printing the field names
-    print('| '.join(field for field in fields))
+    # Processing/Output
+    # Print headers
+    for col in headers:
+        print("%-15s" % col, end=" "),
+    print('\n')
 
+    # Print rows
     for row in rows[:csvreader.line_num]:
-        # parsing each column of a row
+        row_total = 0
         for col in row:
-            print("%10s" % col, end=" "),
+            print("%-15s" % col, end=" "),
         print('\n')
 
 
