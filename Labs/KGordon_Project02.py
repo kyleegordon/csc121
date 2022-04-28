@@ -21,18 +21,34 @@ WHITE_CPO = 0.78
 
 
 def main():
-    display_start_menu()
-    chosen_tea = select_tea()
-    cost_per_oz = determine_cost_per_oz(chosen_tea)
-    cup_size = determine_tea_size()
-    subtotal = calculate_price_tea(cost_per_oz, cup_size)
-    tax = calculate_sales_tax(subtotal)
-    total_cost = calculate_total_bill(subtotal, tax)
-    display_bill(subtotal, tax, total_cost)
+    continue_order = True
+    while continue_order:
+        action_choice = display_start_menu()
+
+        if action_choice == 1:
+            continue_order = False
+        elif action_choice == 3:
+            print("Thank you for using our program. Goodbye.")
+            exit()
+
+        chosen_tea = select_tea()
+        cost_per_oz = determine_cost_per_oz(chosen_tea)
+        cup_size = determine_tea_size()
+        subtotal = calculate_price_tea(cost_per_oz, cup_size)
+        tax = calculate_sales_tax(subtotal)
+        total_cost = calculate_total_bill(subtotal, tax)
+        display_bill(subtotal, tax, total_cost)
 
 
 def display_start_menu():
     print("Welcome to the World's Best Tea Shop")
+    print("1 - Process a Single Order")
+    print("2 - Process Multiple Orders")
+    print("3 - Quit")
+
+    # ADD ERROR HANDLING TO ENSURE PROPER SELECTION IS MADE
+
+    return int(input("Enter choice of action: "))
 
 
 def select_tea():
@@ -100,6 +116,7 @@ def calculate_sales_tax(subtotal):
 
 def calculate_total_bill(subtotal, tax):
     return subtotal + tax
+
 
 def display_bill(subtotal, tax, total_cost):
     # print("\n" + customerName)
