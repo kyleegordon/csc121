@@ -1,6 +1,7 @@
 # Kylee Gordon Lab-21 04/27/2022
 
 # This program reads data from a csv file and displays it formatted like a spreadsheet
+# It also calculates and displays the row and column totals
 
 import csv
 
