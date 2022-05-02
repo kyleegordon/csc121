@@ -21,23 +21,35 @@ WHITE_CPO = 0.78
 
 
 def main():
+    # NEED TO MODIFY MULTIPLE ORDER FUNCTIONALITY TO RANDOMLY GENERATE ORDER DETAILS
     continue_order = True
+
     while continue_order:
         action_choice = display_start_menu()
 
         if action_choice == 1:
             continue_order = False
+            num_orders = 1
+        elif action_choice == 2:
+            num_orders = 0
+            while num_orders > 10 or num_orders < 1:
+                try:
+                    num_orders = int(input("Enter number of orders (Min: 1 - Max: 10)"))
+                except ValueError:
+                    print("Input must be a numeric integer")
         elif action_choice == 3:
             print("Thank you for using our program. Goodbye.")
             exit()
 
-        chosen_tea = select_tea()
-        cost_per_oz = determine_cost_per_oz(chosen_tea)
-        cup_size = determine_tea_size()
-        subtotal = calculate_price_tea(cost_per_oz, cup_size)
-        tax = calculate_sales_tax(subtotal)
-        total_cost = calculate_total_bill(subtotal, tax)
-        display_bill(subtotal, tax, total_cost)
+        for x in range(0, num_orders):
+            chosen_tea = select_tea()
+            cost_per_oz = determine_cost_per_oz(chosen_tea)
+            cup_size = determine_tea_size()
+            cust_name = input("Enter a name for the order: ")
+            subtotal = calculate_price_tea(cost_per_oz, cup_size)
+            tax = calculate_sales_tax(subtotal)
+            total_cost = calculate_total_bill(subtotal, tax)
+            display_bill(subtotal, tax, total_cost, cust_name)
 
 
 def display_start_menu():
@@ -118,11 +130,11 @@ def calculate_total_bill(subtotal, tax):
     return subtotal + tax
 
 
-def display_bill(subtotal, tax, total_cost):
-    # print("\n" + customerName)
+def display_bill(subtotal, tax, total_cost, cust_name):
+    print("\n" + cust_name)
     print("Price of Tea: $" + format(subtotal, '.2f'))
     print("Sales Tax: $" + format(tax, '.2f'))
-    print("Total Amount Owed: $" + format(total_cost, '.2f'))
+    print("Total Amount Owed: $" + format(total_cost, '.2f') + "\n")
 
 
 main()
