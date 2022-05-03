@@ -56,6 +56,7 @@ def main():
                 except ValueError:
                     print("Input must be a numeric integer")
 
+            # Processing
             print("")
             for x in range(0, num_orders):
                 tea_selection = int(random.randint(1, 4))
@@ -67,7 +68,6 @@ def main():
                 cup_size = assign_cup_size(cup_selection)
                 print("Size: " + str(cup_size) + "oz")
 
-                # Processing
                 subtotal = calculate_price_tea(cost_per_oz, cup_size)
                 tax = calculate_sales_tax(subtotal)
                 total_cost = calculate_total_bill(subtotal, tax)
